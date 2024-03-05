@@ -137,8 +137,71 @@ services:
 
 ```
 
-# command for distabe gpgSecretKey issue.
+# "gpg: public key decryption failed" error: 
 
-```docker
-docker pull --disable-content-trust python:3.11.7
+<br>
+
+The error message **"gpg: public key decryption failed"** indicates that `GPG (GNU Privacy Guard)` is having trouble decrypting or accessing the public key, possibly due to a missing or incorrect passphrase. In the context of Docker and the error you're encountering, GPG is used to sign and verify Docker images.
+
+<br>
+
+**Docker Content Trust (DCT)** is a security feature in Docker that uses GPG to sign and verify images. When you build or pull Docker images, Docker verifies the signature of the image using GPG. If the GPG key is not available or cannot be decrypted, you may encounter issues, as seen in your error message.
+
+
+<br><br>
+
+# Create a new **gpg** key by the below command: 
+
+
+```markdown
+## GPG Key Generation
+
+```bash
+gpg --full-generate-key
 ```
+
+### Key Selection
+Please select what kind of key you want:
+   - (1) RSA and RSA
+
+### Key Size
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (3072) 1024
+
+### Key Expiration
+Please specify how long the key should be valid.
+   - 0 = key does not expire
+   - <n>  = key expires in n days
+   - <n>w = key expires in n weeks
+   - <n>m = key expires in n months
+   - <n>y = key expires in n years
+Key is valid for? (0) 1w
+
+### Key User Identification
+Real name: Yasin Arafat
+Email address: yasinarafat.e2021@gmail.com
+Comment: fastapi_docker
+
+You selected this USER-ID:
+   "Yasin Arafat (fastapi_docker) <yasinarafat.e2021@gmail.com>"
+
+### Confirmation
+Is this correct? (y/N) y
+
+### Random Bytes Generation
+We need to generate a lot of random bytes. It is a good idea to perform some other action (type on the keyboard, move the mouse, utilize the disks) during the prime generation; this gives the random number generator a better chance to gain enough entropy.
+
+### Revocation Certificate
+gpg: revocation certificate stored as '/home/yasin/.gnupg/openpgp-revocs.d/821EC292D64FC2BEDDF3824C94B3AB6F724AA812.rev'
+
+### Key Information
+- **Public Key:** rsa1024 2024-03-05 [SC] [expires: 2024-03-12]
+  - 821EC292D64FC2BEDDF3824C94B3AB6F724AA812
+
+- **User ID:** Yasin Arafat (fastapi_docker) <yasinarafat.e2021@gmail.com>
+
+- **Sub Key:** rsa1024 2024-03-05 [E] [expires: 2024-03-12]
+```
+
+Please note that this representation in Markdown is intended for documentation purposes and may not execute as commands in a terminal. If you have any specific formatting requirements or adjustments, feel free to let me know!
+

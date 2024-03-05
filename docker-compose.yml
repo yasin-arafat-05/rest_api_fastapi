@@ -1,10 +1,8 @@
 version: '3'
 services:
   api:
-    build: . 
-    container_name: "restapi_fastapi"
+    build: .
     ports:
       - "8000:8000"
     volumes:
       - .:/app
-

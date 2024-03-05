@@ -1,9 +1,7 @@
 from fastapi import FastAPI
 
-
-app = FastAPI()
+app  = FastAPI()
 
 @app.get('/')
-async def home():
-    return {'hello world'}
-
+async def default():
+    return "this is home route."
