@@ -14,3 +14,6 @@ DevOps হল একটি software development methodology যা software deve
 
 ![Alt text](/helper/images/image.png)
 
+
+for more about [devops](https://github.com/yasin-arafat-05/rest_api_fastapi/blob/main/helper/devops.md)
+

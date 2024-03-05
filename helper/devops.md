@@ -1,5 +1,3 @@
-Sure, I'll explain in simpler English:
-
 DevOps is like a teamwork approach for making computer programs. It has different steps:
 
 1. **Plan:**
