@@ -40,6 +40,7 @@ for more about [devops](https://github.com/yasin-arafat-05/rest_api_fastapi/blob
     ```
     <br>
     - **Copy the Application Files:** Copy your FastAPI application files (Python scripts, requirements.txt, etc.) into the container.
+
     <br>
 
    ```Dockerfile
