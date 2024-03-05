@@ -2,7 +2,8 @@ version: '3'
 services:
   api:
     build: .
+    container_name: "fastapi_restapi"
     ports:
       - "8000:8000"
     volumes:
-      - .:/app
+      - .:/restApi

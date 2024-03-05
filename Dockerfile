@@ -1,8 +1,8 @@
-FROM python:3.11.7
+FROM python
 
-WORKDIR /app
+WORKDIR /restApi
 
-COPY ./ app
+COPY . /restApi
 
 COPY requirement.txt .
 
@@ -10,4 +10,4 @@ RUN pip install -r requirement.txt
 
 EXPOSE 8000
 
-CMD [ "uvicorn","main:app","--host","0.0.0.0","--port","8000","--reload"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
