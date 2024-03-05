@@ -10,10 +10,15 @@
 <br>
 
 # devops এর সাথে docker: 
-DevOps হল একটি software development methodology যা software development থেকে “Dev” শব্দ এবং IT operations থেকে “Ops” শব্দ দুটির মিশ্রিত একটি নাম। যার অর্থ দাঁড়ায় DevOps হচ্ছে কিছু practice, tools, process গুলো এবং এমনকি কোম্পানির লোকেদের একটি সেট যা একটি দলের মধ্যে আরও বেশি সহযোগিতা এবং দ্রুত, আরও নির্ভরযোগ্য product release এর উদ্দেশ্য রাখে।<br>
-
+- DevOps হল একটি software development methodology যা software development থেকে “Dev” শব্দ এবং IT operations থেকে “Ops” শব্দ দুটির মিশ্রিত একটি নাম। যার অর্থ দাঁড়ায় DevOps হচ্ছে কিছু practice, tools, process গুলো এবং এমনকি কোম্পানির লোকেদের একটি সেট যা একটি দলের মধ্যে আরও বেশি সহযোগিতা এবং দ্রুত, আরও নির্ভরযোগ্য product release এর উদ্দেশ্য রাখে।<br>
 ![Alt text](/helper/images/image.png)
 
 
 for more about [devops](https://github.com/yasin-arafat-05/rest_api_fastapi/blob/main/helper/devops.md)
 
+
+<br> <br> <br>
+
+# Create Docker for fastapi: 
+
+- first, create requirement.txt file with a single command: ```python pip freeze > requirement.txt```
