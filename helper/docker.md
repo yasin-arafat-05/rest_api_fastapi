@@ -122,3 +122,10 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 <br><br><br>
 
+
+
+# command for distabe gpgSecretKey issue.
+
+```docker
+docker pull --disable-content-trust python:3.11.7
+```
