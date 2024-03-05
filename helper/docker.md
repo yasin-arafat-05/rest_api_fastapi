@@ -122,7 +122,20 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 <br><br><br>
 
+# Then create docker-compose.yml file:
 
+```dockerfile
+version: '3'
+services:
+  api:
+    build: . 
+    container_name: "restapi_fastapi"
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+
+```
 
 # command for distabe gpgSecretKey issue.
 
