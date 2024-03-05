@@ -21,4 +21,84 @@ for more about [devops](https://github.com/yasin-arafat-05/rest_api_fastapi/blob
 
 # Create Docker for fastapi: 
 
-- first, create requirement.txt file with a single command: ```python pip freeze > requirement.txt```
+- first, create requirement.txt file with a single command: ```pip freeze > requirement.txt```
+- then, create a file name `Dockerfile` and follow the steps below:
+    - **Choose a Base Image:** Start by choosing a base image that includes the necessary Python runtime and libraries. For FastAPI, using an image with a Python runtime is common. Here's an example using the `python:3.9` image as a base:
+
+    ```Dockerfile
+    FROM python:3.9
+    ```
+
+    - **Set the Working Directory:**
+    Set the working directory inside the container where your application code will be placed.
+
+    ```Dockerfile
+    WORKDIR /app
+    ```
+
+    - **Copy the Application Files:**
+   Copy your FastAPI application files (Python scripts, requirements.txt, etc.) into the container.
+
+   ```Dockerfile
+   COPY . /app
+   ```
+
+    -  **Install Dependencies:**
+   Install the required dependencies using `pip`. This step involves copying the `requirements.txt` file into the container and running `pip install`.
+
+   ```Dockerfile
+   COPY requirements.txt .
+   RUN pip install --no-cache-dir -r requirements.txt
+   ```
+
+    - **Expose the Port:**
+   Expose the port that your FastAPI application will run on.
+
+   ```Dockerfile
+   EXPOSE 8000
+   ```
+
+    - **Command to Run the Application:**
+   Specify the command to run your FastAPI application. Typically, you'll use `uvicorn` to run the FastAPI app.
+
+   ```Dockerfile
+   CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+   ```
+
+   Make sure to adjust the `"main:app"` part based on your project structure.
+
+    - **Build and Run the Docker Image:**
+   Build the Docker image using the following command:
+
+   ```bash
+   docker build -t my-fastapi-app .
+   ```
+
+   Replace "my-fastapi-app" with the desired image name.
+
+    - **Run the Docker Container:**
+   Run the Docker container based on the image you just built.
+
+   ```bash
+   docker run -p 8000:8000 my-fastapi-app
+   ```
+
+   This assumes your FastAPI application is set to run on port 8000.
+
+Here's the complete Dockerfile:
+
+```Dockerfile
+FROM python:3.9
+
+WORKDIR /app
+
+COPY . /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 8000
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+
