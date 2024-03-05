@@ -39,22 +39,23 @@ for more about [devops](https://github.com/yasin-arafat-05/rest_api_fastapi/blob
     WORKDIR /app
     ```
     <br>
-    - **Copy the Application Files:**
-   Copy your FastAPI application files (Python scripts, requirements.txt, etc.) into the container.
+    - **Copy the Application Files:** Copy your FastAPI application files (Python scripts, requirements.txt, etc.) into the container.
     <br>
+
    ```Dockerfile
    COPY . /app
    ```
     <br>
 
-    -  **Install Dependencies:**
-   Install the required dependencies using `pip`. This step involves copying the `requirements.txt` file into the container and running `pip install`.
+    -  **Install Dependencies:** Install the required dependencies using `pip`. This step involves copying the `requirements.txt` file into the container and running `pip install`.
+
     <br>
 
    ```Dockerfile
    COPY requirements.txt .
    RUN pip install --no-cache-dir -r requirements.txt
    ```
+
     <br>
 
     - **Expose the Port:**
