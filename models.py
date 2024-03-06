@@ -1,4 +1,4 @@
-from sqlalchemy import Column,Integer,text,String
+from sqlalchemy import Column,Integer,text,String,Boolean
 from datetime import datetime
 from database import Base
 
@@ -9,5 +9,5 @@ class User(Base):
     password = Column(String(100),nullable= False)
     full_name = Column(String(50),nullable=False)
     create_on = Column(String(50),default=datetime.utcnow().date())
-    status = Column(String(1))
+    status = Column(Boolean,default=False)
     

@@ -1,12 +1,12 @@
-from pydantic import BaseModel
+from pydantic import BaseModel,Field
 
 
 
 #__________________________ schemas for user ______________________
 
 class User(BaseModel):
-     email : str
-     password : str
-     full_name : str
+     email : str = Field(...,example="yasin@gmail.com")
+     password : str = Field(...,example="123!@#$%")
+     full_name : str = Field(...,example="Yasin Arafat")
      
      

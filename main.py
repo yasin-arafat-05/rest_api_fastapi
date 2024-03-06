@@ -12,3 +12,6 @@ models.Base.metadata.create_all(bind=engine)
 def output():
     return "this is api"
 
+# sign up
+from auth import sign_up
+app.include_router(sign_up.router)

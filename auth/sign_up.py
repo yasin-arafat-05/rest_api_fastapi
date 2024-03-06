@@ -2,7 +2,8 @@ from fastapi import APIRouter,Depends,HTTPException,status
 from sqlalchemy.orm import Session
 from passwrdHassing import get_hash_password
 from database import SessionLocal
-import schemas,models
+import models
+from auth import schemas
 
 router = APIRouter(
     tags=[
@@ -28,7 +29,7 @@ async def sing_up(req: schemas.User,db: Session = Depends(get_db)):
                             detail="Email already exists.")
         
     # set the default value and encript the password:
-    user_data = user.dict(exclude_unset = True)
+    user_data = req.dict(exclude_unset = True)
     user_data["password"] = get_hash_password(user_data["password"])
     
     try:
@@ -42,4 +43,4 @@ async def sing_up(req: schemas.User,db: Session = Depends(get_db)):
            status_code=status.HTTP_400_BAD_REQUEST,
            detail= str(e)    
         )
-        
+    
