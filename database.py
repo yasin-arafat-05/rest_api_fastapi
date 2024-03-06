@@ -12,7 +12,7 @@ engine = create_engine(
 )
 
 
-sessionLocal = sessionmaker(
+SessionLocal = sessionmaker(
     autoflush=False,autocommit = False,bind=engine
 )
 
