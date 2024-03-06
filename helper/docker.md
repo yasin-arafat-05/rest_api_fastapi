@@ -136,6 +136,7 @@ services:
       - .:/app
 
 ```
+<br> <br> <br>
 
 # "gpg: public key decryption failed" error: 
 
@@ -153,7 +154,6 @@ The error message **"gpg: public key decryption failed"** indicates that `GPG (G
 # Create a new **gpg** key by the below command: 
 
 
-```markdown
 ## GPG Key Generation
 
 ```bash
@@ -201,9 +201,62 @@ gpg: revocation certificate stored as '/home/yasin/.gnupg/openpgp-revocs.d/821EC
 - **User ID:** Yasin Arafat (fastapi_docker) <yasinarafat.e2021@gmail.com>
 
 - **Sub Key:** rsa1024 2024-03-05 [E] [expires: 2024-03-12]
-```
+
+
+<br> <br> <br>
 
 # **Get the newtwork Information of Docker:**
 
+`Networking configuration in Docker is responsible for defining how containers communicate with each other and with the external world. It plays a crucial role in enabling communication between containers, connecting containers to specific networks, and exposing or publishing container ports to the host machine or external networks.`
 
+```dockerfile
+
+docker ps
+
+docker inspect <container_name_or_id>
+
+```
+`docker ps` -> The docker ps command lists the containers that are running on your our current host.
+<br>
+
+`docker inspect` -> give all information about the docker image. <br>
+
+`In the last section we will see the networking option.`
+<br>
+
+Let's break down the information in the "Networks" section of the `docker inspect` output and discuss the real-life implications of each term:
+
+1. **Network Name (`rest_api_fastapi_default`):**
+   - **Real-Life Analogy:** Think of it as a virtual network or a subnet within your Docker environment.
+   - **Example:** You have multiple services running in Docker, and each service might be connected to a different network for isolation.
+
+2. **Aliases (`fastapi_restapi`, `api`, `879ee690509f`):**
+   - **Real-Life Analogy:** Aliases are like additional names or nicknames for a person.
+   - **Example:** The container can be referred to by different names within the network, allowing services to communicate using different identifiers.
+
+3. **MacAddress (`02:42:ac:12:00:02`):**
+   - **Real-Life Analogy:** Similar to a physical device's MAC address, which is a unique identifier for network communication.
+   - **Example:** Each network interface card (NIC) in your computer has a unique MAC address for identification on a network.
+
+4. **NetworkID and EndpointID:**
+   - **NetworkID:** Identifies the Docker network.
+   - **EndpointID:** Identifies the specific container endpoint in the network.
+   - **Real-Life Analogy:** Think of NetworkID as a street name, and EndpointID as the address on that street.
+   - **Example:** In a city, multiple buildings (containers) can exist on the same street (network), each with a unique address (endpoint).
+
+5. **Gateway (`172.18.0.1`):**
+   - **Real-Life Analogy:** Similar to a gateway or router that connects different networks.
+   - **Example:** In your home network, the router serves as the gateway connecting your local devices to the internet.
+
+6. **IPAddress (`172.18.0.2`) and IPPrefixLen (`16`):**
+   - **Real-Life Analogy:** Like a postal address, specifying the exact location of the container in the network.
+   - **Example:** In a city, each building (container) has a unique street address (IP address), and the prefix length indicates the size of the address space.
+
+7. **IPv6Gateway, GlobalIPv6Address, GlobalIPv6PrefixLen:**
+   - **IPv6** equivalents of the above IPv4-related properties, relevant for IPv6 addressing.
+   - **Example:** In a future scenario where IPv6 is widely used, these properties would provide the corresponding IPv6 details.
+
+8. **DriverOpts:**
+   - **Real-Life Analogy:** Configuration options specific to the network driver.
+   - **Example:** If you use a custom network driver, there might be specific options or settings associated with it.
 
