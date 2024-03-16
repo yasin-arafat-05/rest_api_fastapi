@@ -11,24 +11,24 @@ ASSESS_TOKEN_EXPIRE_MINUTES = 180
 asses_credential  = dotenv_values(".env")
 
 router = APIRouter(
-    ["login"]
+    tags=["login"]
 )
 
 
-@router.post('/token')
-async def access_token_for_login(req : OAuth2PasswordRequestForm =Depends()):
-    user = authenticate_user(req.email,req.passwrd)
+@router.post("/token")
+async def access_token_for_login(req : OAuth2PasswordRequestForm = Depends()):
+    user = authenticate_user(req.username,req.password)
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Incorrect Credientials",
                             headers={"WWW-Authenticate": "Bearer"}
                             )
     assess_token_expire = timedelta(minutes=ASSESS_TOKEN_EXPIRE_MINUTES)
-    assess_token = create_access_token(data={"id":user["id"],
-                                       "email":user["email"],},
+    assess_token = create_access_token(data={"id":user.id,
+                                       "email":user.email,},
                                        expires_delta= assess_token_expire
                                        )
-    return assess_token
+    return {"access_token": assess_token, "token_type": "bearer"}
 
     
 def authenticate_user(email:str, passwrd:str ):
@@ -36,10 +36,10 @@ def authenticate_user(email:str, passwrd:str ):
     user = db.query(models.User).filter(models.User.email==email).first()
     if not user:
         return False
-    if not verify_password(passwrd,user["password"]):
+    if not verify_password(passwrd,user.password):
         return False 
-   
-    return True
+    return user
+    
     
 def create_access_token(data:dict,expires_delta: timedelta = None):
     to_encode = data.copy()
@@ -49,6 +49,7 @@ def create_access_token(data:dict,expires_delta: timedelta = None):
         expire = datetime.utcnow() + timedelta(hours=6)
     to_encode.update({"exp":expire})
     encode_jwt = jwt.encode(to_encode,asses_credential["SECRECT_KEY"],algorithm=asses_credential["ALGORITHM"])
+    print("encode_jwt: "+encode_jwt)
     return encode_jwt
     
     
