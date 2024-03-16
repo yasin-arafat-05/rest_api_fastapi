@@ -10,3 +10,10 @@ class User(BaseModel):
      full_name : str = Field(...,example="Yasin Arafat")
      
      
+class ResetPassword(BaseModel):
+     old_password : str = Field(...,example="Old Password")
+     new_password : str  = Field(...,example="New Password")
+     confirm_password : str = Field(...,example="Confirm Password")
+     
+class ChangePassword(BaseModel):
+     old_password : str 
